@@ -3,29 +3,29 @@ import {
   fetchCityError,
   fetchCompareCitiesSuccess,
   fetchCompareCitiesError,
-} from "./actions";
+} from './actions';
 import {
   FETCH_CITY_SUCCESS,
   FETCH_CITY_ERROR,
   FETCH_COMPARE_CITIES_SUCCESS,
   FETCH_COMPARE_CITIES_ERROR,
-} from "./constants";
-import { CityProps } from "../types";
+} from './constants';
+import { CityProps } from '../types';
 
 const initialState = {
   selectedCity: {
-    location: { name: "", country: "" },
+    location: { name: '', country: '' },
     current: {
       temp_c: 0,
       wind_kph: 0,
       humidity: 0,
       cloud: 0,
-      condition: { text: "" },
+      condition: { text: '' },
     },
     forecast: {
       forecastday: [
         {
-          date: "",
+          date: '',
           day: {
             avgtemp_c: 0,
           },

@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   fetchCitySuccess,
   fetchCityError,
   fetchCompareCitiesSuccess,
   fetchCompareCitiesError,
-} from "./actions";
+} from './actions';
 
 export const fetchCity = (city: string) => (dispatch: any) => {
   axios

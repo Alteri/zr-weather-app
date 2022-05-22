@@ -1,9 +1,9 @@
-import React, { useMemo } from "react";
-import { CityItemStyled } from "./styled";
-import { Text } from "../Text";
-import { WindIcon, DropletIcon, CloundIcon } from "../Icon";
-import { Tooltip, OverlayTrigger } from "react-bootstrap";
-import { Grid } from "../Grid";
+import React, { useMemo } from 'react';
+import { CityItemStyled } from './styled';
+import { Text } from '../Text';
+import { WindIcon, DropletIcon, CloundIcon } from '../Icon';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Grid } from '../Grid';
 
 type CityItemProps = {
   name: string;
@@ -36,17 +36,17 @@ const CityItem = ({
       {
         icon: <WindIcon />,
         info: `${wind}km/h`,
-        tooltipInfo: "Prędkność wiatru",
+        tooltipInfo: 'Prędkność wiatru',
       },
       {
         icon: <DropletIcon />,
         info: `${humidity}%`,
-        tooltipInfo: "Wilgotność",
+        tooltipInfo: 'Wilgotność',
       },
       {
         icon: <CloundIcon />,
         info: `${cloud}%`,
-        tooltipInfo: "Zachmurzenie",
+        tooltipInfo: 'Zachmurzenie',
       },
     ];
     return memoizeInformation;

@@ -1,5 +1,5 @@
-import React from "react";
-import { IconWrapper } from "../styled";
+import React from 'react';
+import { IconWrapper } from '../styled';
 
 const Icon = () => {
   return (

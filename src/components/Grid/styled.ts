@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const GridStyled = styled.div<{
   gap?: string;
@@ -7,6 +7,5 @@ export const GridStyled = styled.div<{
   display: grid;
 
   ${({ gap }) => gap && `grid-gap: ${gap}px;`}
-  ${({ templateColumns }) =>
-    templateColumns && `grid-template-columns: ${templateColumns};`}
+  ${({ templateColumns }) => templateColumns && `grid-template-columns: ${templateColumns};`}
 `;

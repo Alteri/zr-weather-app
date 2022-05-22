@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { GridStyled } from "./styled";
+import React, { ReactNode } from 'react';
+import { GridStyled } from './styled';
 
 type GridProps = {
   children: ReactNode;

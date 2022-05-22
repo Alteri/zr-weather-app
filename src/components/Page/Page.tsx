@@ -1,7 +1,7 @@
-import React, { ReactNode, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { PageStyled } from "./styled";
-import { fetchCompareCities } from "../../store/fetch";
+import React, { ReactNode, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { PageStyled } from './styled';
+import { fetchCompareCities } from '../../store/fetch';
 
 type PageProps = {
   children: ReactNode;

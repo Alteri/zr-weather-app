@@ -3,8 +3,8 @@ import {
   FETCH_CITY_ERROR,
   FETCH_COMPARE_CITIES_SUCCESS,
   FETCH_COMPARE_CITIES_ERROR,
-} from "./constants";
-import { CityProps } from "../types";
+} from './constants';
+import { CityProps } from '../types';
 
 export const fetchCitySuccess = (city: CityProps) => {
   return {

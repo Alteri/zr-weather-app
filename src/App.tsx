@@ -1,8 +1,8 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Home from "./views/Home";
-import City from "./views/City";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Home from './views/Home';
+import City from './views/City';
 
 const App = () => {
   const isError = useSelector((state: { error: string }) => state.error);

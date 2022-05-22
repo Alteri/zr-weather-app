@@ -1,17 +1,17 @@
-import styled, { css } from "styled-components";
-import { TextType } from "./Text";
+import styled, { css } from 'styled-components';
+import { TextType } from './Text';
 
 const getTextTypeStyle = (textType: TextType) => {
   switch (textType) {
-    case "h1":
+    case 'h1':
       return css`
         font-size: 22px;
       `;
-    case "h2":
+    case 'h2':
       return css`
         font-size: 40px;
       `;
-    case "h3":
+    case 'h3':
       return css`
         font-size: 20px;
       `;

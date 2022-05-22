@@ -1,5 +1,5 @@
-import { createSelector } from "reselect";
-import { CityProps } from "../types";
+import { createSelector } from 'reselect';
+import { CityProps } from '../types';
 
 export const selectedCitySelector = createSelector(
   (store: { selectedCity: CityProps }) => store.selectedCity,

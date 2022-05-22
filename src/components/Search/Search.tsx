@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { fetchCity } from "../../store/fetch";
-import { slugify, normalizeText } from "../../utils/slugify";
-import { Form, InputGroup, Button, Alert } from "react-bootstrap";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { fetchCity } from '../../store/fetch';
+import { slugify, normalizeText } from '../../utils/slugify';
+import { Form, InputGroup, Button, Alert } from 'react-bootstrap';
 
 type SearchProps = {
   isError: boolean;
@@ -12,7 +12,7 @@ type SearchProps = {
 const Search = ({ isError }: SearchProps) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [cityName, setCityName] = useState("");
+  const [cityName, setCityName] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -28,9 +28,7 @@ const Search = ({ isError }: SearchProps) => {
           type="text"
           autoFocus
           value={cityName}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setCityName(e.target.value)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCityName(e.target.value)}
         />
         <Button type="submit">Szukaj</Button>
       </InputGroup>

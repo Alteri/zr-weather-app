@@ -1,8 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Search } from "../components/Search";
-import { selectedCitySelector } from "../store/selectors";
-import { CityItem } from "../components/CityItem";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Search } from '../components/Search';
+import { selectedCitySelector } from '../store/selectors';
+import { CityItem } from '../components/CityItem';
 
 type CityProps = {
   isError: boolean;

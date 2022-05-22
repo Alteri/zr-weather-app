@@ -1,5 +1,5 @@
 export const normalizeText = (text: string) => {
-  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 };
 
 export const slugify = (text: string) => {
@@ -8,6 +8,6 @@ export const slugify = (text: string) => {
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w\-]+/g, "");
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '');
 };

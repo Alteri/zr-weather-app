@@ -1,12 +1,13 @@
 import React, { ReactNode } from "react";
 import { TextStyled } from "./styled";
 
-const textTypes = ["h1", "h2", "p"] as const;
+const textTypes = ["h1", "h2", "h3", "p"] as const;
 export type TextType = typeof textTypes[number];
 
 const textTypeToTag = {
   h1: "h1",
   h2: "h2",
+  h3: "h3",
   p: "p",
 } as const;
 

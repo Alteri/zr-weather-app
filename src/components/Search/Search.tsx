@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchCity } from "../../store/fetch";
 import { slugify, normalizeText } from "../../utils/slugify";
 import { Form, InputGroup, Button, Alert } from "react-bootstrap";
-import { errorSelector } from "../../store/selectors";
 
-const Search = () => {
+type SearchProps = {
+  isError?: string;
+};
+
+const Search = ({ isError }: SearchProps) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [cityName, setCityName] = useState("");
-  const errorInfo = useSelector(errorSelector);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(fetchCity(normalizeText(cityName)));
-    errorInfo && navigate(`/${slugify(cityName)}`, { replace: true });
+    navigate(`/${slugify(cityName)}`, { replace: true });
   };
 
   return (
@@ -32,7 +34,7 @@ const Search = () => {
         />
         <Button type="submit">Szukaj</Button>
       </InputGroup>
-      {errorInfo && (
+      {isError && (
         <Alert className="mt-2" variant="danger">
           Nie znaleziono pasującej lokalizacji.
         </Alert>

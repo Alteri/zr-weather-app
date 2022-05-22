@@ -7,9 +7,9 @@ type GridProps = {
   templateColumns?: string;
 };
 
-const Grid = ({ children, gap, templateColumns }: GridProps) => {
+const Grid = ({ children, gap, templateColumns, ...props }: GridProps) => {
   return (
-    <GridStyled gap={gap} templateColumns={templateColumns}>
+    <GridStyled gap={gap} templateColumns={templateColumns} {...props}>
       {children}
     </GridStyled>
   );

@@ -1,1 +1,1 @@
-export { Page } from "./styled";
+export { default as Page } from "./Page";

@@ -12,6 +12,13 @@ type CityItemProps = {
   wind: number;
   humidity: number;
   cloud: number;
+  conditionText: string;
+  days: {
+    date: string;
+    day: {
+      avgtemp_c: number;
+    };
+  }[];
 };
 
 const CityItem = ({
@@ -21,8 +28,10 @@ const CityItem = ({
   wind,
   humidity,
   cloud,
+  conditionText,
+  days,
 }: CityItemProps) => {
-  const weatherInformation = [
+  const WEATHERINFORMATION = [
     {
       icon: <WindIcon />,
       info: `${wind}km/h`,
@@ -41,14 +50,17 @@ const CityItem = ({
   ];
 
   return (
-    <CityItemStyled>
+    <CityItemStyled gap="24">
       <Grid gap="4">
         <Text textType="h1">{name}</Text>
         <Text>{country}</Text>
       </Grid>
-      <Text textType="h2">{temp}°C</Text>
+      <Grid gap="8">
+        <Text textType="h2">{temp}°C</Text>
+        <Text>{conditionText}</Text>
+      </Grid>
       <Grid templateColumns="repeat(3, 1fr)" gap="8">
-        {weatherInformation.map(({ icon, info, tooltipInfo }, index) => (
+        {WEATHERINFORMATION.map(({ icon, info, tooltipInfo }, index) => (
           <OverlayTrigger
             key={index}
             placement="bottom"
@@ -62,6 +74,17 @@ const CityItem = ({
             </div>
           </OverlayTrigger>
         ))}
+      </Grid>
+      <Grid gap="16">
+        <Text textType="h3">Temperatura na kolejne dni</Text>
+        <Grid templateColumns="repeat(3, 1fr)">
+          {days.map(({ date, day: { avgtemp_c } }, index) => (
+            <Grid key={index} gap="8">
+              <Text>{date}</Text>
+              <Text>{avgtemp_c}°C</Text>
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </CityItemStyled>
   );

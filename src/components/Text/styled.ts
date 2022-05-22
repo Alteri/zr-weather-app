@@ -11,6 +11,10 @@ const getTextTypeStyle = (textType: TextType) => {
       return css`
         font-size: 40px;
       `;
+    case "h3":
+      return css`
+        font-size: 20px;
+      `;
     default:
       return css`
         font-size: 16px;

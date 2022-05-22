@@ -1,30 +1,42 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Page } from "../components/Page";
 import { Search } from "../components/Search";
 import { selectedCitySelector } from "../store/selectors";
 import { CityItem } from "../components/CityIteam";
+import { errorSelector } from "../store/selectors";
 
 const City = () => {
   const selectedCity = useSelector(selectedCitySelector);
+  const isError = useSelector(errorSelector);
 
   const {
     location: { name, country },
-    current: { temp_c, wind_kph, humidity, cloud },
+    current: {
+      temp_c,
+      wind_kph,
+      humidity,
+      cloud,
+      condition: { text },
+    },
+    forecast: { forecastday },
   } = selectedCity;
 
   return (
-    <Page>
-      <Search />
-      <CityItem
-        name={name}
-        country={country}
-        temp={temp_c}
-        wind={wind_kph}
-        humidity={humidity}
-        cloud={cloud}
-      />
-    </Page>
+    <>
+      <Search isError={isError} />
+      {!isError && (
+        <CityItem
+          name={name}
+          country={country}
+          temp={temp_c}
+          wind={wind_kph}
+          humidity={humidity}
+          cloud={cloud}
+          conditionText={text}
+          days={forecastday}
+        />
+      )}
+    </>
   );
 };
 

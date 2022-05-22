@@ -1,13 +1,9 @@
+export const normalizeText = (text: string) => {
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
 export const slugify = (text: string) => {
-  const from = "ąćęłńóśźż";
-  const to = "acelnoszz";
-
-  const newText = text
-    .split("")
-    .map((letter, i) =>
-      letter.replace(new RegExp(from.charAt(i), "g"), to.charAt(i))
-    );
-
+  const newText = normalizeText(text);
   return newText
     .toString()
     .toLowerCase()

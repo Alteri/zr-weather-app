@@ -1,6 +1,7 @@
 import { FETCH_CITY_SUCCESS, FETCH_CITY_ERROR } from "./constants";
+import { CityProps } from "../types";
 
-export const fetchCitySuccess = (city: any) => {
+export const fetchCitySuccess = (city: CityProps) => {
   return {
     type: FETCH_CITY_SUCCESS,
     city,

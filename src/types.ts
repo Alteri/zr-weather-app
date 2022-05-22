@@ -8,5 +8,16 @@ export type CityProps = {
     wind_kph: number;
     humidity: number;
     cloud: number;
+    condition: {
+      text: string;
+    };
+  };
+  forecast: {
+    forecastday: {
+      date: string;
+      day: {
+        avgtemp_c: number;
+      };
+    }[];
   };
 };

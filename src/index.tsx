@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { store } from "./store/store";
 import { GlobalStyle } from "./components/Global/globalStyle";
+import { Page } from "../src/components/Page";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,10 +14,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <GlobalStyle />
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <Page>
+      <React.StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </React.StrictMode>
+    </Page>
   </Provider>
 );

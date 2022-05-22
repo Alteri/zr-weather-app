@@ -2,12 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Search } from "../components/Search";
 import { selectedCitySelector } from "../store/selectors";
-import { CityItem } from "../components/CityIteam";
-import { errorSelector } from "../store/selectors";
+import { CityItem } from "../components/CityItem";
 
-const City = () => {
+type CityProps = {
+  isError: boolean;
+};
+
+const City = ({ isError }: CityProps) => {
   const selectedCity = useSelector(selectedCitySelector);
-  const isError = useSelector(errorSelector);
 
   const {
     location: { name, country },

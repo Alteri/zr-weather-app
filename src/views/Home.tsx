@@ -1,8 +1,12 @@
 import React from "react";
 import { Search } from "../components/Search";
 
-const Home = () => {
-  return <Search />;
+type HomeProps = {
+  isError: boolean;
+};
+
+const Home = ({ isError }: HomeProps) => {
+  return <Search isError={isError} />;
 };
 
 export default Home;

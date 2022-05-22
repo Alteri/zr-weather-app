@@ -2,8 +2,8 @@ import axios from "axios";
 import {
   fetchCitySuccess,
   fetchCityError,
-  fetchStaticCitiesSuccess,
-  fetchStaticCitiesError,
+  fetchCompareCitiesSuccess,
+  fetchCompareCitiesError,
 } from "./actions";
 
 export const fetchCity = (city: string) => (dispatch: any) => {
@@ -19,17 +19,21 @@ export const fetchCity = (city: string) => (dispatch: any) => {
     });
 };
 
-const staticCities = ["Warszawa", "Krakow", "Wroclaw", "Lublin"];
+const allCities = [
+  `${process.env.REACT_APP_BASE_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&q=Lublin&lang=pl`,
+  `${process.env.REACT_APP_BASE_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&q=Warszawa&lang=pl`,
+  `${process.env.REACT_APP_BASE_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&q=Wroclaw&lang=pl`,
+];
 
-export const fetchStaticCities = () => (dispatch: any) => {
+export const fetchCompareCities = () => (dispatch: any) => {
   axios
-    .get(
-      `${process.env.REACT_APP_BASE_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&q=${staticCities}&lang=pl`
-    )
+    .all(allCities.map((city) => axios.get(city)))
     .then((response) => {
-      dispatch(fetchStaticCitiesSuccess(response.data));
+      response.forEach((item) => {
+        dispatch(fetchCompareCitiesSuccess(item.data));
+      });
     })
     .catch((error) => {
-      dispatch(fetchStaticCitiesError(error));
+      dispatch(fetchCompareCitiesError(error));
     });
 };

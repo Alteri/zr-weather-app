@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { CityItemStyled } from "./styled";
 import { Text } from "../Text";
 import { WindIcon, DropletIcon, CloundIcon } from "../Icon";
@@ -31,23 +31,26 @@ const CityItem = ({
   conditionText,
   days,
 }: CityItemProps) => {
-  const WEATHERINFORMATION = [
-    {
-      icon: <WindIcon />,
-      info: `${wind}km/h`,
-      tooltipInfo: "Prędkność wiatru",
-    },
-    {
-      icon: <DropletIcon />,
-      info: `${humidity}%`,
-      tooltipInfo: "Wilgotność",
-    },
-    {
-      icon: <CloundIcon />,
-      info: `${cloud}%`,
-      tooltipInfo: "Zachmurzenie",
-    },
-  ];
+  const weather_information = useMemo(() => {
+    const memoizeInformation = [
+      {
+        icon: <WindIcon />,
+        info: `${wind}km/h`,
+        tooltipInfo: "Prędkność wiatru",
+      },
+      {
+        icon: <DropletIcon />,
+        info: `${humidity}%`,
+        tooltipInfo: "Wilgotność",
+      },
+      {
+        icon: <CloundIcon />,
+        info: `${cloud}%`,
+        tooltipInfo: "Zachmurzenie",
+      },
+    ];
+    return memoizeInformation;
+  }, [wind, humidity, cloud]);
 
   return (
     <CityItemStyled gap="24">
@@ -60,9 +63,9 @@ const CityItem = ({
         <Text>{conditionText}</Text>
       </Grid>
       <Grid templateColumns="repeat(3, 1fr)" gap="8">
-        {WEATHERINFORMATION.map(({ icon, info, tooltipInfo }, index) => (
+        {weather_information.map(({ icon, info, tooltipInfo }) => (
           <OverlayTrigger
-            key={index}
+            key={tooltipInfo}
             placement="bottom"
             overlay={<Tooltip>{tooltipInfo}</Tooltip>}
           >
@@ -78,8 +81,8 @@ const CityItem = ({
       <Grid gap="16">
         <Text textType="h3">Temperatura na kolejne dni</Text>
         <Grid templateColumns="repeat(3, 1fr)">
-          {days.map(({ date, day: { avgtemp_c } }, index) => (
-            <Grid key={index} gap="8">
+          {days.map(({ date, day: { avgtemp_c } }) => (
+            <Grid key={date} gap="8">
               <Text>{date}</Text>
               <Text>{avgtemp_c}°C</Text>
             </Grid>

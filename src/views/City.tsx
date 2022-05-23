@@ -62,6 +62,7 @@ const City = ({ isError }: CityProps) => {
       ) : (
         <Grid justifyContent="center">
           <Spinner animation="grow" />
+          test
         </Grid>
       )}
     </>

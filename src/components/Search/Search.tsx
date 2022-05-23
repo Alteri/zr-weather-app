@@ -1,43 +1,44 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchCity } from '../../store/fetch';
+import { fetchCity, addNewCityToCompare } from '../../store/fetch';
 import { slugify, normalizeText } from '../../utils/slugify';
-import { Form, InputGroup, Button, Alert } from 'react-bootstrap';
+import { Input, InputWrapper, Button, Alert } from './styled';
 
 type SearchProps = {
   isError?: boolean;
+  isCompareForm?: boolean;
 };
 
-const Search = ({ isError }: SearchProps) => {
+const Search = ({ isError, isCompareForm }: SearchProps) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [cityName, setCityName] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(fetchCity(normalizeText(cityName)));
-    navigate(`/${slugify(cityName)}`, { replace: true });
+    if (isCompareForm) {
+      dispatch(addNewCityToCompare(normalizeText(cityName)));
+    } else {
+      dispatch(fetchCity(normalizeText(cityName)));
+      navigate(`/${slugify(cityName)}`, { replace: true });
+    }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <InputGroup>
-        <Form.Control
+    <form onSubmit={handleSubmit}>
+      <InputWrapper>
+        <Input
           placeholder="Wpisz miasto"
           type="text"
-          autoFocus
+          autoFocus={!isCompareForm}
           value={cityName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCityName(e.target.value)}
         />
         <Button type="submit">Szukaj</Button>
-      </InputGroup>
-      {isError && (
-        <Alert className="mt-2" variant="danger">
-          Nie znaleziono pasującej lokalizacji.
-        </Alert>
-      )}
-    </Form>
+      </InputWrapper>
+      {isError && <Alert>Nie znaleziono pasującej lokalizacji.</Alert>}
+    </form>
   );
 };
 

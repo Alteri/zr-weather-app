@@ -6,7 +6,6 @@ import { SelectedCityItem } from '../components/SelectedCityItem';
 import { ComparedCityItem } from '../components/ComparedCityItem';
 import { Grid } from '../components/Grid';
 import { AddNewCity } from '../components/AddNewCity';
-import Spinner from 'react-bootstrap/Spinner';
 
 type CityProps = {
   isError: boolean;
@@ -47,23 +46,22 @@ const City = ({ isError }: CityProps) => {
             />
             <AddNewCity />
             <Grid gap="16">
-              {comparedCities.map(({ location: { name, country }, current }, index) => (
-                <ComparedCityItem
-                  key={index}
-                  name={name}
-                  country={country}
-                  temp={current.temp_c}
-                  selectedCityTemp={temp_c}
-                />
-              ))}
+              {comparedCities
+                .map(({ location: { name, country }, current }, index) => (
+                  <ComparedCityItem
+                    key={index}
+                    name={name}
+                    country={country}
+                    temp={current.temp_c}
+                    selectedCityTemp={temp_c}
+                  />
+                ))
+                .reverse()}
             </Grid>
           </>
         )
       ) : (
-        <Grid justifyContent="center">
-          <Spinner animation="grow" />
-          test
-        </Grid>
+        <Grid justifyContent="center">Loading...</Grid>
       )}
     </>
   );

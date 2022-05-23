@@ -8,3 +8,5 @@ export const AddNewCityButton = styled.button`
   padding: 8px;
   border-radius: 4px;
 `;
+
+export const FormWrapper = styled.div``;

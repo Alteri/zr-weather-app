@@ -13,7 +13,7 @@ root.render(
     <GlobalStyle />
     <Page>
       <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="/zr-weather-app">
           <App />
         </BrowserRouter>
       </React.StrictMode>

@@ -35,7 +35,7 @@ const Search = ({ isError, isCompareForm }: SearchProps) => {
           value={cityName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCityName(e.target.value)}
         />
-        <Button type="submit">Szukaj</Button>
+        <Button type="submit">{isCompareForm ? 'Dodaj' : 'Szukaj'}</Button>
       </InputWrapper>
       {isError && <Alert>Nie znaleziono pasującej lokalizacji.</Alert>}
     </form>

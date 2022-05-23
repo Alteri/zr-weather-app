@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/zr-weather-app/static/js/main.26ee752e.js",
+    "main.js": "/zr-weather-app/static/js/main.f692b691.js",
     "index.html": "/zr-weather-app/index.html",
-    "main.26ee752e.js.map": "/zr-weather-app/static/js/main.26ee752e.js.map"
+    "main.f692b691.js.map": "/zr-weather-app/static/js/main.f692b691.js.map"
   },
   "entrypoints": [
-    "static/js/main.26ee752e.js"
+    "static/js/main.f692b691.js"
   ]
 }

@@ -17,7 +17,7 @@ const Search = ({ isError }: SearchProps) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(fetchCity(normalizeText(cityName)));
-    navigate(`${process.env.REACT_APP_BASE_URL}/${slugify(cityName)}`, { replace: true });
+    navigate(`/${slugify(cityName)}`, { replace: true });
   };
 
   return (

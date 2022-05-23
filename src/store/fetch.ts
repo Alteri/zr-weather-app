@@ -5,8 +5,9 @@ import {
   fetchCompareCitiesSuccess,
   fetchCompareCitiesError,
 } from './actions';
+import { AppDispatch } from './store';
 
-export const fetchCity = (city: string) => (dispatch: any) => {
+export const fetchCity = (city: string) => (dispatch: AppDispatch) => {
   axios
     .get(
       `${process.env.REACT_APP_BASE_URL}/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${city}&days=10&aqi=no&alerts=no&lang=pl`
@@ -25,7 +26,7 @@ const allCities = [
   `${process.env.REACT_APP_BASE_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&q=Wroclaw&lang=pl`,
 ];
 
-export const fetchCompareCities = () => (dispatch: any) => {
+export const fetchCompareCities = () => (dispatch: AppDispatch) => {
   axios
     .all(allCities.map((city) => axios.get(city)))
     .then((response) => {

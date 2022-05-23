@@ -9,7 +9,7 @@ type PageProps = {
 
 const Page = ({ children }: PageProps) => {
   const dispatch = useDispatch();
-
+  localStorage.setItem('currentCity', JSON.stringify(''));
   const currentCity = localStorage.getItem('currentCity') || '';
   const initialCity = JSON.parse(currentCity);
 

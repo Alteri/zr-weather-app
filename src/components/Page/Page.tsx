@@ -7,7 +7,7 @@ type PageProps = {
   children: ReactNode;
 };
 
-const currentCity = localStorage.getItem('currentCity') || '';
+const currentCity = localStorage.getItem('currentCity') || 'warszawa';
 const initialCity = JSON.parse(currentCity);
 
 const Page = ({ children }: PageProps) => {

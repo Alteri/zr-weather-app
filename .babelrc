@@ -4,5 +4,5 @@
         "@babel/react",
         "@babel/preset-typescript"
     ], 
-    "plugins": [["styled-components", { "ssr": true }]]
+    "plugins": ["babel-plugin-styled-components"]
 }

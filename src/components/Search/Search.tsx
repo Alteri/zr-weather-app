@@ -22,7 +22,6 @@ const Search = ({ isError, isCompareForm }: SearchProps) => {
     } else {
       dispatch(fetchCity(normalizeText(cityName)));
       navigate(`/${slugify(cityName)}`, { replace: true });
-      localStorage.setItem('currentCity', JSON.stringify(cityName));
     }
   };
 

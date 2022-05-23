@@ -35,6 +35,7 @@ const initialState = {
   },
   cities: [],
   error: false,
+  isPending: true,
 };
 
 type ActionType = ReturnType<
@@ -57,6 +58,7 @@ export const rootReducer = (
         ...state,
         selectedCity: action.city,
         error: false,
+        isPending: false,
       };
     case FETCH_CITY_ERROR:
       return {

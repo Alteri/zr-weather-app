@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
-import { CityItemStyled } from './styled';
+import { SelectedCityItemStyled } from './styled';
 import { Text } from '../Text';
 import { WindIcon, DropletIcon, CloundIcon } from '../Icon';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Grid } from '../Grid';
 
-type CityItemProps = {
+type SelectedCityItemProps = {
   name: string;
   country: string;
   temp: number;
@@ -21,7 +20,7 @@ type CityItemProps = {
   }[];
 };
 
-const CityItem = ({
+const SelectedCityItem = ({
   name,
   temp,
   country,
@@ -30,30 +29,27 @@ const CityItem = ({
   cloud,
   conditionText,
   days,
-}: CityItemProps) => {
+}: SelectedCityItemProps) => {
   const weather_information = useMemo(() => {
     const memoizeInformation = [
       {
         icon: <WindIcon />,
         info: `${wind}km/h`,
-        tooltipInfo: 'Prędkność wiatru',
       },
       {
         icon: <DropletIcon />,
         info: `${humidity}%`,
-        tooltipInfo: 'Wilgotność',
       },
       {
         icon: <CloundIcon />,
         info: `${cloud}%`,
-        tooltipInfo: 'Zachmurzenie',
       },
     ];
     return memoizeInformation;
   }, [wind, humidity, cloud]);
 
   return (
-    <CityItemStyled gap="24">
+    <SelectedCityItemStyled gap="24">
       <Grid gap="4">
         <Text textType="h1">{name}</Text>
         <Text>{country}</Text>
@@ -63,19 +59,11 @@ const CityItem = ({
         <Text>{conditionText}</Text>
       </Grid>
       <Grid templateColumns="repeat(3, 1fr)" gap="8">
-        {weather_information.map(({ icon, info, tooltipInfo }) => (
-          <OverlayTrigger
-            key={tooltipInfo}
-            placement="bottom"
-            overlay={<Tooltip>{tooltipInfo}</Tooltip>}
-          >
-            <div>
-              <Grid gap="4">
-                {icon}
-                <Text>{info}</Text>
-              </Grid>
-            </div>
-          </OverlayTrigger>
+        {weather_information.map(({ icon, info }, index) => (
+          <Grid gap="4" key={index}>
+            {icon}
+            <Text>{info}</Text>
+          </Grid>
         ))}
       </Grid>
       <Grid gap="16">
@@ -89,8 +77,8 @@ const CityItem = ({
           ))}
         </Grid>
       </Grid>
-    </CityItemStyled>
+    </SelectedCityItemStyled>
   );
 };
 
-export default CityItem;
+export default SelectedCityItem;

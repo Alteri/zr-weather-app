@@ -5,11 +5,17 @@ type GridProps = {
   children: ReactNode;
   gap?: string;
   templateColumns?: string;
+  justifyContent?: string;
 };
 
-const Grid = ({ children, gap, templateColumns, ...props }: GridProps) => {
+const Grid = ({ children, gap, templateColumns, justifyContent, ...props }: GridProps) => {
   return (
-    <GridStyled gap={gap} templateColumns={templateColumns} {...props}>
+    <GridStyled
+      gap={gap}
+      templateColumns={templateColumns}
+      justifyContent={justifyContent}
+      {...props}
+    >
       {children}
     </GridStyled>
   );

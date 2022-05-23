@@ -6,6 +6,7 @@ export const AddNewCityButton = styled.button`
   color: ${Colors.white};
   border: none;
   padding: 8px;
+  cursor: pointer;
   border-radius: 4px;
 `;
 

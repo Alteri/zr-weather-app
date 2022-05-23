@@ -2,8 +2,8 @@ import axios from 'axios';
 import {
   fetchCitySuccess,
   fetchCityError,
-  fetchCompareCitiesSuccess,
-  fetchCompareCitiesError,
+  addCompareCitiesSuccess,
+  addCompareCitiesError,
 } from './actions';
 import { AppDispatch } from './store';
 
@@ -26,15 +26,28 @@ const allCities = [
   `${process.env.REACT_APP_BASE_URL}/current.json?key=${process.env.REACT_APP_API_KEY}&q=Wroclaw&lang=pl`,
 ];
 
-export const fetchCompareCities = () => (dispatch: AppDispatch) => {
+export const addCompareCities = () => (dispatch: AppDispatch) => {
   axios
     .all(allCities.map((city) => axios.get(city)))
     .then((response) => {
       response.forEach((item) => {
-        dispatch(fetchCompareCitiesSuccess(item.data));
+        dispatch(addCompareCitiesSuccess(item.data));
       });
     })
     .catch((error) => {
-      dispatch(fetchCompareCitiesError(error));
+      dispatch(addCompareCitiesError(error));
+    });
+};
+
+export const addNewCityToCompare = (city: string) => (dispatch: AppDispatch) => {
+  axios
+    .get(
+      `${process.env.REACT_APP_BASE_URL}/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${city}&days=10&aqi=no&alerts=no&lang=pl`
+    )
+    .then((response) => {
+      dispatch(addCompareCitiesSuccess(response.data));
+    })
+    .catch((error) => {
+      dispatch(addCompareCitiesError(error));
     });
 };

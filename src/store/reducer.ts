@@ -1,14 +1,14 @@
 import {
   fetchCitySuccess,
   fetchCityError,
-  fetchCompareCitiesSuccess,
-  fetchCompareCitiesError,
+  addCompareCitiesSuccess,
+  addCompareCitiesError,
 } from './actions';
 import {
   FETCH_CITY_SUCCESS,
   FETCH_CITY_ERROR,
-  FETCH_COMPARE_CITIES_SUCCESS,
-  FETCH_COMPARE_CITIES_ERROR,
+  ADD_COMPARE_CITIES_SUCCESS,
+  ADD_COMPARE_CITIES_ERROR,
 } from './constants';
 import { CityProps } from '../types';
 
@@ -35,14 +35,15 @@ const initialState = {
   },
   cities: [],
   error: false,
+  errorCompare: false,
   isPending: true,
 };
 
 type ActionType = ReturnType<
   | typeof fetchCitySuccess
   | typeof fetchCityError
-  | typeof fetchCompareCitiesSuccess
-  | typeof fetchCompareCitiesError
+  | typeof addCompareCitiesSuccess
+  | typeof addCompareCitiesError
 >;
 
 export const rootReducer = (
@@ -64,16 +65,18 @@ export const rootReducer = (
       return {
         ...state,
         error: action.error,
+        isPending: false,
       };
-    case FETCH_COMPARE_CITIES_SUCCESS:
+    case ADD_COMPARE_CITIES_SUCCESS:
       return {
         ...state,
         cities: [...state.cities, action.cities],
+        errorCompare: false,
       };
-    case FETCH_COMPARE_CITIES_ERROR:
+    case ADD_COMPARE_CITIES_ERROR:
       return {
         ...state,
-        error: action.error,
+        errorCompare: action.error,
       };
     default:
       return state;

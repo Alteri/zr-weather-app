@@ -6,7 +6,7 @@ import { slugify, normalizeText } from '../../utils/slugify';
 import { Form, InputGroup, Button, Alert } from 'react-bootstrap';
 
 type SearchProps = {
-  isError: boolean;
+  isError?: boolean;
 };
 
 const Search = ({ isError }: SearchProps) => {

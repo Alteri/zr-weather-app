@@ -2,7 +2,7 @@ import React from 'react';
 import { Search } from '../components/Search';
 
 type HomeProps = {
-  isError: boolean;
+  isError?: boolean;
 };
 
 const Home = ({ isError }: HomeProps) => {

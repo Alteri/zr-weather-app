@@ -10,6 +10,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home isError={!!isError} />} />
       <Route path="/:city" element={<City isError={!!isError} />} />
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 };

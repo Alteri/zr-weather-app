@@ -11,12 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <Provider store={store}>
     <GlobalStyle />
-    <Page>
-      <React.StrictMode>
-        <BrowserRouter basename="/zr-weather-app/">
-          <App />
-        </BrowserRouter>
-      </React.StrictMode>
-    </Page>
+    <BrowserRouter basename="/zr-weather-app/">
+      <Page>
+        <App />
+      </Page>
+    </BrowserRouter>
   </Provider>
 );
